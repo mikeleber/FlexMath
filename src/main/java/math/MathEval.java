@@ -25,9 +25,10 @@ import java.util.StringTokenizer;
 import java.util.TreeMap;
 import java.util.TreeSet;
 
-import ch.sympany.commons.lang.StringUtils;
-import ch.sympany.commons.lang.math.function.ContainsFunction;
-import ch.sympany.commons.lang.math.function.SumFunction;
+
+import math.function.ContainsFunction;
+import math.function.SumFunction;
+import tools.StringUtils;
 
 /**
  * Math Evaluator.  Provides the ability to evaluate a String math expression, with support for pureFunctions, variables and
@@ -154,8 +155,8 @@ public class MathEval
         operators = new Operator[256];
         DefaultImpl.registerOperators(this);
 
-        constants = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
-        variables = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
+        constants = new TreeMap(String.CASE_INSENSITIVE_ORDER);
+        variables = new TreeMap(String.CASE_INSENSITIVE_ORDER);
         setConstant("E", Math.E);
         setConstant("Euler", 0.577215664901533D);
         setConstant("NULL_VALUE", NULL_VALUE);
@@ -166,8 +167,8 @@ public class MathEval
         setConstant("PHI", 1.618033988749895D);
         setConstant("PI", Math.PI);
 
-        pureFunctions = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
-        impureFunctions = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
+        pureFunctions = new TreeMap(String.CASE_INSENSITIVE_ORDER);
+        impureFunctions = new TreeMap(String.CASE_INSENSITIVE_ORDER);
         DefaultImpl.registerFunctions(this);
 
         relaxed = false;
@@ -185,14 +186,14 @@ public class MathEval
 
         operators = oth.operators;
 
-        constants = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
+        constants = new TreeMap(String.CASE_INSENSITIVE_ORDER);
         constants.putAll(oth.constants);
 
-        variables = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
+        variables = new TreeMap(String.CASE_INSENSITIVE_ORDER);
         variables.putAll(oth.variables);
 
-        pureFunctions = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
-        impureFunctions = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
+        pureFunctions = new TreeMap(String.CASE_INSENSITIVE_ORDER);
+        impureFunctions = new TreeMap(String.CASE_INSENSITIVE_ORDER);
         pureFunctions.putAll(oth.pureFunctions);
         impureFunctions.putAll(oth.impureFunctions);
 
@@ -383,7 +384,7 @@ public class MathEval
      * Return a set of the variables in the supplied expression. Note: Substitutions which are in the constant table are not included.
      */
     public Set<String> getVariablesWithin(String exp) {
-        Set<String> all = new TreeSet<>(String.CASE_INSENSITIVE_ORDER);
+        Set<String> all = new TreeSet(String.CASE_INSENSITIVE_ORDER);
         String add = null;
 
         if (separators == null) {

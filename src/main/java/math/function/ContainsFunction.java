@@ -3,11 +3,11 @@ package math.function;
 import java.util.Collection;
 import java.util.Objects;
 
-import ch.sympany.commons.lang.math.MathEval;
+import math.MathEval;
+
 
 public class ContainsFunction implements MathEval.FunctionHandler {
 
-    @Override
     public Object evaluateFunction(String fncnam, MathEval.ArgParser fncargs) throws ArithmeticException {
         Object source = fncargs.next();
         Object search = fncargs.next();

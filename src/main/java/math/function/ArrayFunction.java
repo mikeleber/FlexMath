@@ -1,10 +1,10 @@
 package math.function;
 
-import ch.sympany.commons.lang.math.MathEval;
+
+import math.MathEval;
 
 public class ArrayFunction implements MathEval.FunctionHandler {
 
-    @Override
     public Object evaluateFunction(String fncnam, MathEval.ArgParser fncargs) throws ArithmeticException {
         StringBuilder result = new StringBuilder();
         while (fncargs.hasNext()) {
